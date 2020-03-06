@@ -3,4 +3,11 @@
 
 # project files
 README.md
+contract/node_modules
+contract/coverage
+contract/coverage.json
+contract/typechain
+contract/typechain-types
 contract/.env
+contract/cache
+contract/artifacts
