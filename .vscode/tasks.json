@@ -28,7 +28,13 @@
     },
     {
       "label": "hardhat_network->run_on->local",
-      "command": "cd ${workspaceFolder}/contract && npx hardhat node --hostname 0.0.0.0 --port 8545"
+      "command": "npx hardhat node --hostname 0.0.0.0 --port 8545",
+      "options": { "cwd": "./contract" }
+    },
+    {
+      "label": "hardhat_network->info",
+      "command": "npx hardhat run scripts/hardhat_node_info.js",
+      "options": { "cwd": "./contract" }
     }
   ]
 }

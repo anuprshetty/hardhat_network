@@ -1,0 +1,23 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "contract->hardhat_script",
+      "request": "launch",
+      "type": "node",
+      "program": "node_modules/.bin/hardhat",
+      "args": ["run", "scripts/${input:hardhat_script}"]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "hardhat_script",
+      "type": "pickString",
+      "description": "Enter <hardhat_script>",
+      "options": ["hardhat_node_info.js"]
+    }
+  ]
+}

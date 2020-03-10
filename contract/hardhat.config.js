@@ -4,7 +4,18 @@ require("hardhat-ethernal");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.19",
+  solidity: {
+    version: "0.8.18",
+  },
+  networks: {
+    hardhat: {
+      initialBaseFeePerGas: 0,
+    },
+    localhost: {
+      url: "http://127.0.0.1:8545/",
+    },
+  },
+  defaultNetwork: "hardhat",
   ethernal: {
     apiToken: process.env.ETHERNAL_API_TOKEN,
     disableSync: true, // If set to true, plugin will not sync blocks & txs

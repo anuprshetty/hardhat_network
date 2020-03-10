@@ -17,5 +17,6 @@ RUN npm install
 # expose the default Hardhat network port
 EXPOSE 8545
 
-# setup Hardhat network
+# setup Hardhat network:
+# - starts HTTP and WebSocket JSON-RPC server
 CMD npx hardhat node --hostname 0.0.0.0 --port 8545
