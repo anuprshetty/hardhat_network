@@ -2,6 +2,9 @@
   // Use IntelliSense to learn about possible attributes.
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+
+  // See https://code.visualstudio.com/docs/editor/variables-reference
+  // for available variables which can be used in tasks.json, launch.json and settings.json files.
   "version": "0.2.0",
   "configurations": [
     {
@@ -15,9 +18,11 @@
   "inputs": [
     {
       "id": "hardhat_script",
-      "type": "pickString",
-      "description": "Enter <hardhat_script>",
-      "options": ["hardhat_node_info.js"]
+      "type": "command",
+      "command": "shellCommand.execute",
+      "args": {
+        "command": "ls ${workplaceFolder}contract/scripts/"
+      }
     }
   ]
 }
