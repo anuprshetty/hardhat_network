@@ -17,8 +17,10 @@ async function fetchAccounts() {
   const wallet_mnemonic = ethers.Mnemonic.fromPhrase(wallet_info.mnemonic);
 
   const provider = new ethers.JsonRpcProvider(hardhat_node_url);
+  const hardhat_network_info = await provider.getNetwork();
   const node_accounts = await provider.listAccounts();
 
+  console.log("Chain ID: ", parseInt(hardhat_network_info.chainId));
   console.log("Total Accounts: ", node_accounts.length);
   console.log("-----------------------------------------------------");
 
