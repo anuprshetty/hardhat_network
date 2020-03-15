@@ -12,3 +12,4 @@ compiler_config.json
 remix-slither-report.json
 typechain
 typechain-types
+hash_wallet_accounts.json

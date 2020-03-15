@@ -37,6 +37,11 @@
       "options": { "cwd": "./contract" }
     },
     {
+      "label": "hardhat_network->hash_wallet_accounts",
+      "command": "npx hardhat run scripts/hash_wallet_accounts.js",
+      "options": { "cwd": "./contract" }
+    },
+    {
       "label": "hardhat_network->launch_ethernal",
       "command": "open -a 'Google Chrome' 'https://app.tryethernal.com/auth?next=%2Ftransactions'",
       "detail": "Ethernal is an open source block explorer for EVM-based blockchains"
