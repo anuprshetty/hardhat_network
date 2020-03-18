@@ -9,11 +9,24 @@ module.exports = {
   },
   networks: {
     hardhat: {
-      // chainId: 31337,
+      
       initialBaseFeePerGas: 0,
     },
     localhost: {
       url: "http://127.0.0.1:8545/",
+    },
+    dockerhost: {
+      url: "http://host.docker.internal:8545/",
+    },
+    remote: {
+      url: "https://hardhat-network.onrender.com",
+    },
+    ganache: {
+      url: "http://127.0.0.1:7545/", // Update the URL to match your Ganache network configuration
+      accounts: {
+        mnemonic:
+          "unaware noodle timber pepper hard hold fatigue thumb curve prosper good journey", // Update with the Ganache mnemonic phrase
+      },
     },
   },
   defaultNetwork: "hardhat",
@@ -36,3 +49,4 @@ module.exports = {
     verbose: false, // If set to true, will display this config object on start and the full error object
   },
 };
+
