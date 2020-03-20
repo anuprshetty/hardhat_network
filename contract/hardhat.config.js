@@ -9,7 +9,7 @@ module.exports = {
   },
   networks: {
     hardhat: {
-      
+      chainId: process.env.CHAIN_ID,
       initialBaseFeePerGas: 0,
     },
     localhost: {
