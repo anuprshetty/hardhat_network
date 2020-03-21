@@ -29,6 +29,20 @@
         "contract->prerequisites->npm_cleanup",
         "contract->prerequisites->npm_install"
       ]
+    },
+    {
+      "label": "contract->debug_on->console",
+      "command": "npx hardhat --network ${input:hardhat_network} console"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "hardhat_network",
+      "type": "command",
+      "command": "shellCommand.execute",
+      "args": {
+        "command": "cd ${workplaceFolder}contract && npx hardhat networks"
+      }
     }
   ]
 }
