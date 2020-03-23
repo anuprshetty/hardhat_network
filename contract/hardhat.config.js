@@ -61,3 +61,21 @@ task("networks", "Prints the list of hardhat networks", async () => {
   });
 });
 
+task("account_nonce", "Prints the transaction count (nonce) of an account")
+  .addParam("address", "Account address")
+  .setAction(async (taskArgs) => {
+    // Nonce:
+    // - A scalar value equal to the number of transactions sent from an Externally Owned Account (EOA) OR the number of contract-creations made by an account with associated code (Contract Account).
+    // - The nonce is an attribute of the originating address. i.e., it only has meaning in the context of the sending address. However, the nonce is not stored explicitly as part of an account’s state on the blockchain. Instead, it is calculated dynamically, by counting the number of confirmed transactions that have originated from an address.
+    // - The nonce is a zero-based counter, meaning the first transaction has nonce 0. For example, if we have a transaction count (nonce) of 40, which means that nonces 0 through 39 have been seen. The next transaction’s nonce will need to be 40.
+
+    const account_address = taskArgs.address;
+    const provider = hre.ethers.provider;
+    const network = provider._networkName;
+
+    const nonce = await provider.getTransactionCount(account_address);
+
+    console.log(
+      `(Network: ${network}) Account: ${account_address} --> Nonce: ${nonce}`
+    );
+  });

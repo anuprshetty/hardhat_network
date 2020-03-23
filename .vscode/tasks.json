@@ -37,6 +37,11 @@
       "options": { "cwd": "./contract" }
     },
     {
+      "label": "hardhat_network->account_nonce",
+      "command": "npx hardhat --network ${input:hardhat_network} account_nonce --address ${input:account_address}",
+      "options": { "cwd": "./contract" }
+    },
+    {
       "label": "hardhat_network->hash_wallet_accounts",
       "command": "npx hardhat run scripts/hash_wallet_accounts.js",
       "options": { "cwd": "./contract" }
@@ -45,6 +50,21 @@
       "label": "hardhat_network->launch_ethernal",
       "command": "open -a 'Google Chrome' 'https://app.tryethernal.com/auth?next=%2Ftransactions'",
       "detail": "Ethernal is an open source block explorer for EVM-based blockchains"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "hardhat_network",
+      "type": "command",
+      "command": "shellCommand.execute",
+      "args": {
+        "command": "cd ${workplaceFolder}contract && npx hardhat networks"
+      }
+    },
+    {
+      "id": "account_address",
+      "type": "promptString",
+      "description": "Enter <account_address>"
     }
   ]
 }
