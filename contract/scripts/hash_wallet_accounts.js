@@ -1,36 +1,42 @@
-const { ethers, config } = require("hardhat");
+const hre = require("hardhat");
 const fs = require("fs");
 const path = require("path");
 
 async function fetchAccounts() {
-  const hardhat_node_url = config.networks.localhost.url;
+  let provider = hre.ethers.provider;
+
+  const hardhat_network_info = {
+    name: provider._networkName,
+    url:
+      "url" in hre.config.networks[provider._networkName]
+        ? hre.config.networks[provider._networkName].url
+        : "",
+    chainId: parseInt((await provider.getNetwork()).chainId),
+  };
+
+  console.log("---------------- Hardhat Network Info ----------------");
+  console.log(`${JSON.stringify(hardhat_network_info, null, 2)}\n`);
 
   // fetching wallet_metadata from hardhat.config.js file
-  const wallet_info = config.networks.hardhat.accounts;
-
-  console.log(`\nHardhat Local Network: ${hardhat_node_url}\n`);
+  const wallet_info = hre.config.networks.hardhat.accounts;
 
   console.log("-------------------- Wallet Info --------------------");
+  console.log(`${JSON.stringify(wallet_info, null, 2)}\n`);
 
-  console.log(wallet_info);
-
-  console.log("-----------------------------------------------------");
-
-  const wallet_mnemonic = ethers.Mnemonic.fromPhrase(wallet_info.mnemonic);
-
-  const provider = new ethers.JsonRpcProvider(hardhat_node_url);
-  const hardhat_network_info = await provider.getNetwork();
+  provider = new ethers.JsonRpcProvider(hardhat_network_info.url);
   const node_accounts = await provider.listAccounts();
 
-  console.log("Chain ID: ", parseInt(hardhat_network_info.chainId));
+  console.log("------------------- Accounts Info -------------------");
   console.log("Total Accounts: ", node_accounts.length);
   console.log("-----------------------------------------------------");
+
+  const wallet_mnemonic = hre.ethers.Mnemonic.fromPhrase(wallet_info.mnemonic);
 
   var hash_wallet_accounts = [];
   for (let i = 0; i < node_accounts.length; i++) {
     const node_account = node_accounts[i];
 
-    const wallet_account = ethers.HDNodeWallet.fromMnemonic(
+    const wallet_account = hre.ethers.HDNodeWallet.fromMnemonic(
       wallet_mnemonic,
       wallet_info.path + `/${i}`
     );
@@ -44,7 +50,7 @@ async function fetchAccounts() {
     const name = "hardhat_" + `${i}`;
     const address = wallet_account.address;
     const privateKey = wallet_account.privateKey;
-    const balance = ethers.formatEther(await provider.getBalance(address));
+    const balance = hre.ethers.formatEther(await provider.getBalance(address));
 
     hash_wallet_accounts.push({ name, address, privateKey });
 
