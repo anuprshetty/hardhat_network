@@ -12,7 +12,24 @@
       "request": "launch",
       "type": "node",
       "program": "node_modules/.bin/hardhat",
-      "args": ["run", "scripts/${input:hardhat_script}"]
+      "args": [
+        "--network",
+        "${input:hardhat_network}",
+        "run",
+        "scripts/${input:hardhat_script}"
+      ]
+    },
+    {
+      "name": "contract->hardhat_task",
+      "request": "launch",
+      "type": "node",
+      "program": "node_modules/.bin/hardhat",
+      "args": [
+        "--network",
+        "${input:hardhat_network}",
+        "${input:hardhat_task}"
+        // "<hardhat_task_args>" // Example: "--address", "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+      ]
     }
   ],
   "inputs": [
@@ -23,6 +40,19 @@
       "args": {
         "command": "ls ${workplaceFolder}contract/scripts/"
       }
+    },
+    {
+      "id": "hardhat_network",
+      "type": "command",
+      "command": "shellCommand.execute",
+      "args": {
+        "command": "cd ${workplaceFolder}contract && npx hardhat networks"
+      }
+    },
+    {
+      "id": "hardhat_task",
+      "type": "promptString",
+      "description": "Enter <hardhat_task>"
     }
   ]
 }
