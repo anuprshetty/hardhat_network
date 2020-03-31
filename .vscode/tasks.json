@@ -33,17 +33,17 @@
     },
     {
       "label": "hardhat_network->info",
-      "command": "npx hardhat run scripts/hardhat_node_info.js",
+      "command": "npx hardhat --network ${input:hardhat_network} run scripts/hardhat_node_info.js",
+      "options": { "cwd": "./contract" }
+    },
+    {
+      "label": "hardhat_network->hash_wallet_accounts",
+      "command": "npx hardhat --network ${input:hardhat_network} run scripts/hash_wallet_accounts.js",
       "options": { "cwd": "./contract" }
     },
     {
       "label": "hardhat_network->account_nonce",
       "command": "npx hardhat --network ${input:hardhat_network} account_nonce --address ${input:account_address}",
-      "options": { "cwd": "./contract" }
-    },
-    {
-      "label": "hardhat_network->hash_wallet_accounts",
-      "command": "npx hardhat run scripts/hash_wallet_accounts.js",
       "options": { "cwd": "./contract" }
     },
     {
