@@ -7,7 +7,7 @@ module.exports = {
   solidity: "0.8.19",
   ethernal: {
     apiToken: process.env.ETHERNAL_API_TOKEN,
-    disableSync: false, // If set to true, plugin will not sync blocks & txs
+    disableSync: true, // If set to true, plugin will not sync blocks & txs
     disableTrace: false, // If set to true, plugin won't trace transaction
     workspace: process.env.ETHERNAL_WORKSPACE, // Set the workspace to use, will default to the default workspace (latest one used in the dashboard). It is also possible to set it through the ETHERNAL_WORKSPACE env variable
     /*
