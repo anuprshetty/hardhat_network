@@ -2,7 +2,7 @@
 
 ## Information
 
-- Hardhat network node -->
+- Hardhat network node --> https://hardhat-network.onrender.com
 
 ## Debug tools
 
