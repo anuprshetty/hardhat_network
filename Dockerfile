@@ -18,4 +18,4 @@ RUN npm install
 EXPOSE 8545
 
 # setup Hardhat network
-CMD npx hardhat node
+CMD npx hardhat node --hostname 0.0.0.0 --port 8545
