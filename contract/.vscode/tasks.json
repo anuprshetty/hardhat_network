@@ -15,20 +15,20 @@
 
   "tasks": [
     {
-      "label": "hardhat_network->run_on->docker_compose->up",
-      "command": "docker compose up --build --detach"
+      "label": "contract->prerequisites->npm_install",
+      "command": "npm install"
     },
     {
-      "label": "hardhat_network->run_on->docker_compose->down",
-      "command": "docker compose down"
+      "label": "contract->prerequisites->npm_cleanup",
+      "command": "rm -rf node_modules && rm -f package-lock.json"
     },
     {
-      "label": "hardhat_network->run_on->docker_compose->logs",
-      "command": "docker compose logs --timestamps --follow"
-    },
-    {
-      "label": "hardhat_network->run_on->local",
-      "command": "cd ${workspaceFolder}/contract && npx hardhat node --hostname 0.0.0.0 --port 8545"
+      "label": "contract->prerequisites->npm_reset",
+      "dependsOrder": "sequence", // by default, "parallel"
+      "dependsOn": [
+        "contract->prerequisites->npm_cleanup",
+        "contract->prerequisites->npm_install"
+      ]
     }
   ]
 }
