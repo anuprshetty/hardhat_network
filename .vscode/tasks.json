@@ -27,8 +27,13 @@
       "command": "docker compose logs --timestamps --follow"
     },
     {
-      "label": "hardhat_network->run_on->local",
+      "label": "hardhat_network->run_on->local->blockchain_1",
       "command": "npx hardhat node --hostname 0.0.0.0 --port 8545",
+      "options": { "cwd": "./contract" }
+    },
+    {
+      "label": "hardhat_network->run_on->local->blockchain_2",
+      "command": "npx hardhat node --hostname 0.0.0.0 --port 8546",
       "options": { "cwd": "./contract" }
     },
     {
