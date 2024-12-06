@@ -1,0 +1,39 @@
+###################### REST API Design ######################
+# Documentation --> https://marketplace.visualstudio.com/items?itemName=humao.rest-client ("REST Client" VS code extension).
+
+
+# eth_json_rpc_documentation --> https://www.quicknode.com/docs/ethereum/eth_accounts
+
+
+# ETHEREUM BLOCKCHAIN
+@eth_json_rpc_client=http://127.0.0.1:8545
+@method=eth_accounts
+@params=[]
+
+# @eth_json_rpc_client=http://127.0.0.1:8545
+# @method=eth_getBalance
+# @params=["0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266", "latest"]
+
+
+curl {{eth_json_rpc_client}} \
+  -X POST \
+  -H "Content-Type: application/json" \
+  --data '{
+      "method": "{{method}}",
+      "params": {{params}},
+      "id": 1,
+      "jsonrpc": "2.0"
+}'
+
+
+### --> delimiter for each request.
+
+
+# BEACON CHAIN
+@beacon_chain_http_client=http://127.0.0.1:8545
+@url=/eth/v1/beacon/blocks/head/attestations
+
+
+curl "{{beacon_chain_http_client}}{{url}}" \
+  -X GET \
+  -H "accept: application/json"
