@@ -21,6 +21,9 @@ module.exports = {
     remote: {
       url: "https://hardhat-network.onrender.com",
     },
+    eth_local_net: {
+      url: "http://127.0.0.1:<port>",
+    },
     ganache: {
       url: "http://127.0.0.1:7545/", // Update the URL to match your Ganache network configuration
       accounts: {
