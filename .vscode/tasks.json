@@ -15,6 +15,31 @@
 
   "tasks": [
     {
+      "label": "kurtosis_ethereum_network->start->eth_local_net_1",
+      "command": "kurtosis --enclave eth-local-net-1 run  github.com/ethpandaops/ethereum-package --args-file network_params.yaml",
+      "options": { "cwd": "./kurtosis_eth_package" }
+    },
+    {
+      "label": "kurtosis_ethereum_network->start->eth_local_net_2",
+      "command": "kurtosis --enclave eth-local-net-2 run  github.com/ethpandaops/ethereum-package --args-file network_params.yaml",
+      "options": { "cwd": "./kurtosis_eth_package" }
+    },
+    {
+      "label": "kurtosis_ethereum_network->stop",
+      "command": "kurtosis clean --all",
+      "options": { "cwd": "./kurtosis_eth_package" }
+    },
+    {
+      "label": "kurtosis_ethereum_network->info->eth_local_net_1",
+      "command": "kurtosis enclave inspect eth-local-net-1 --full-uuids",
+      "options": { "cwd": "./kurtosis_eth_package" }
+    },
+    {
+      "label": "kurtosis_ethereum_network->info->eth_local_net_2",
+      "command": "kurtosis enclave inspect eth-local-net-2 --full-uuids",
+      "options": { "cwd": "./kurtosis_eth_package" }
+    },
+    {
       "label": "hardhat_network->run_on->docker_compose->up",
       "command": "docker compose up --build --detach"
     },
