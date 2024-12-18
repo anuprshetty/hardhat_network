@@ -134,7 +134,15 @@ network_params:
   devnet_repo: ethpandaops
   prefunded_accounts: {}
 
-additional_services: []
+additional_services:
+  - el_forkmon
+  # - blockscout
+  - dora
+  # - full_beaconchain_explorer
+  - prometheus_grafana
+  # - blobscan
+  - forky
+  - tracoor
 
 dora_params:
   image: ""
@@ -168,7 +176,7 @@ assertoor_params:
 wait_for_finalization: false
 global_log_level: "info"
 snooper_enabled: false
-ethereum_metrics_exporter_enabled: false
+ethereum_metrics_exporter_enabled: true
 parallel_keystore_generation: false
 disable_peer_scoring: false
 persistent: false
